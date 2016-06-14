@@ -20,7 +20,7 @@ emptyState :: SC
 emptyState = SC Map.empty 0
 
 instance showSC :: Show SC where
-  show (SC s c) = "state=" ++ show s ++ ", counter=" ++ show c
+  show (SC s c) = "state=" <> show s <> ", counter=" <> show c
 
 
 

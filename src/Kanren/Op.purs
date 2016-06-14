@@ -32,9 +32,6 @@ equals l r = BS \(SC s c) → case unify (quote l) (quote r) s of
 fresh :: BS LogicValue
 fresh = BS \(SC s c) → pureT (SC s (c + 1)) (LVar c)
 
-freshn :: Int → BS (Array LogicValue)
-freshn n = BS \(SC s c) → pureT (SC s (c + n)) $ LVar <$> c..(c + (n - 1))
-
 
 
 infixl 3 disjo as ?||
@@ -55,7 +52,9 @@ appendo l r out = appendo' (quote l) (quote r) (quote out)
             l ?== Empty
             r ?== out
           <|> do
-            [a, d, res] <- freshn 3
+            a ← fresh
+            d ← fresh
+            res ← fresh
             Pair a d ?== l
             Pair a res ?== out
             appendo' d r res

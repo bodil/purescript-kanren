@@ -1,10 +1,9 @@
 module Kanren.Value where
 
 import Prelude
-
-import Data.Maybe (Maybe(Just, Nothing))
-import Data.Foldable (class Foldable, foldr)
 import Data.List as List
+import Data.Foldable (class Foldable, foldr)
+import Data.Maybe (Maybe(Just, Nothing))
 
 
 
@@ -46,13 +45,13 @@ toArray l@(Pair _ _) | isProperList l =
 toArray _ = Nothing
 
 instance showLogicValue :: Show LogicValue where
-  show (LVar i) = "_." ++ show i
+  show (LVar i) = "_." <> show i
   show (Int i) = show i
   show (String s) = s
   show p@(Pair _ _) | isProperList p = case toArray p of
     Just l → show l
     Nothing → "bad list"
-  show (Pair car cdr) = "(" ++ show car ++ " . " ++ show cdr ++ ")"
+  show (Pair car cdr) = "(" <> show car <> " . " <> show cdr <> ")"
   show Empty = "[]"
 
 

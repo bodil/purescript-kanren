@@ -4,6 +4,7 @@ import Prelude
 import Control.Alt (class Alt)
 import Control.Alternative (class Alternative)
 import Control.MonadPlus (class MonadPlus)
+import Control.MonadZero (class MonadZero)
 import Control.Plus (class Plus)
 import Data.Monoid (mempty)
 import Data.Tuple (fst, Tuple(Tuple))
@@ -31,7 +32,7 @@ instance functorBS :: Functor BS where
   map = liftA1
 
 instance applicativeBS :: Applicative BS where
-  pure a = BS \sc → return $ Tuple sc a
+  pure a = BS \sc → pure $ Tuple sc a
 
 instance monadBS :: Monad BS
 
@@ -42,5 +43,7 @@ instance plusBS :: Plus BS where
   empty = BS (\sc → mempty)
 
 instance alternativeBS :: Alternative BS
+
+instance monadZeroBS :: MonadZero BS
 
 instance monadPlusBS :: MonadPlus BS
