@@ -1,5 +1,11 @@
 {
-  "name": "microkanren",
+  "name": "purescript-kanren",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bodil/purescript-kanren.git"
+  },
+  "license": "LGPL-3.0+",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -7,12 +13,15 @@
     "output"
   ],
   "dependencies": {
+    "purescript-control": "^1.0.0",
     "purescript-foldable-traversable": "^1.0.0",
     "purescript-lists": "^1.0.1",
     "purescript-maps": "^1.0.0",
     "purescript-maybe": "^1.0.0",
     "purescript-monoid": "^1.0.0",
-    "purescript-prelude": "^1.0.1",
-    "purescript-control": "^1.0.0"
+    "purescript-prelude": "^1.0.1"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^1.0.0"
   }
 }
