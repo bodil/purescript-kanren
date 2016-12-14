@@ -8,21 +8,15 @@ import Data.Maybe (Maybe(Just, Nothing))
 
 import Kanren.Value (LogicValue(LVar, Pair))
 
-
-
 type State = Map Int LogicValue
 
 data SC = SC State Int
-
-
 
 emptyState :: SC
 emptyState = SC Map.empty 0
 
 instance showSC :: Show SC where
   show (SC s c) = "state=" <> show s <> ", counter=" <> show c
-
-
 
 walk :: LogicValue → State → LogicValue
 walk k@(LVar l) s  = case Map.lookup l s of

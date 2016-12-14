@@ -1,14 +1,12 @@
 module Kanren.Run where
 
-import Prelude
+import Prelude (map, (<$>), (>>>))
+import Kanren.Stream (Stream)
 import Data.List.Lazy as Lazy
 import Data.Tuple (fst)
 import Kanren.Goal (BS(BS), Goal)
 import Kanren.State (emptyState, State, SC(SC), walk)
-import Kanren.Stream (Stream)
 import Kanren.Value (LogicValue(Pair, LVar))
-
-
 
 callGoal :: Goal → Stream SC
 callGoal (BS g) = fst <$> g emptyState
