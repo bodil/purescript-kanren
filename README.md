@@ -43,10 +43,6 @@ run do
 
 ## Missing Features
 
-μKanren should perform depth first search. This implementation
-currently uses `Data.List.Lazy`'s append implementation, which gives a
-breadth first search.
-
 The amount of data types available are restricted by the `LogicValue`
 implementation: strings, integers, and cons lists only.
 

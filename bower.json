@@ -13,15 +13,15 @@
     "output"
   ],
   "dependencies": {
-    "purescript-control": "^1.0.0",
-    "purescript-foldable-traversable": "^1.0.0",
-    "purescript-lists": "^1.0.1",
-    "purescript-maps": "^1.0.0",
-    "purescript-maybe": "^1.0.0",
-    "purescript-monoid": "^1.0.0",
-    "purescript-prelude": "^1.0.1"
+    "purescript-prelude": "^2.1.0",
+    "purescript-control": "^2.0.0",
+    "purescript-foldable-traversable": "^2.0.0",
+    "purescript-lists": "^3.2.1",
+    "purescript-maps": "^2.0.2",
+    "purescript-maybe": "^2.0.1",
+    "purescript-monoid": "^2.2.0"
   },
   "devDependencies": {
-    "purescript-psci-support": "^1.0.0"
+    "purescript-psci-support": "^2.0.0"
   }
 }

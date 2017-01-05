@@ -2,15 +2,20 @@ module Kanren.Op where
 
 import Prelude
 import Control.Alt ((<|>))
-import Data.Array ((..))
+import Data.List.Lazy (List(..), Step(..), step)
 import Data.Maybe (Maybe(Nothing, Just))
 import Data.Monoid (mempty)
+import Data.Newtype (unwrap)
 import Data.Tuple (Tuple, fst, curry)
 import Kanren.Goal (Goal, BS(BS))
 import Kanren.State (unify, SC(SC))
 import Kanren.Value (LogicValue(Empty, Pair, LVar), quote, class AsLogicValue)
 
-
+fairAppend :: forall a. List a -> List a -> List a
+fairAppend xs ys = List (go <$> unwrap xs)
+  where
+  go Nil = step ys
+  go (Cons x xs') = Cons x (fairAppend ys xs')
 
 pureT :: ∀ a b f. (Applicative f) ⇒ a → b → f (Tuple a b)
 pureT = curry pure
@@ -36,7 +41,7 @@ fresh = BS \(SC s c) → pureT (SC s (c + 1)) (LVar c)
 
 infixl 3 disjo as ?||
 disjo :: Goal → Goal → Goal
-disjo (BS a) (BS b) = BS \sc → a sc <> b sc
+disjo (BS a) (BS b) = BS \sc → fairAppend (a sc) (b sc)
 
 
 
